@@ -9,35 +9,6 @@
   <meta name="keywords" content="global, template, html, sass, jquery">
   <meta name="author" content="Bucky Maler">
   <link rel="stylesheet" href="assets/css/main.css">
-  
-    <script>
-      function sendData () {
-      // (A) GET FORM DATA
-      var data = new FormData(document.getElementById("demo"));
-      // data.append("KEY", "VALUE");
-
-      // (B) INIT FETCH POST
-      fetch("https://n346ou54og.execute-api.us-east-1.amazonaws.com/prod/contact", {
-        method: "POST",
-        body: data
-      })
-
-      // (C) RETURN SERVER RESPONSE AS TEXT
-      .then(res => {
-        if (res.status != 200) { throw new Error("Bad Server Response"); }
-        return res.text();
-      })
-
-      // (D) SERVER RESPONSE
-      .then(res => console.log(res))
-
-      // (E) HANDLE ERRORS - OPTIONAL
-      .catch(err => console.error(err));
-
-      // (F) PREVENT FORM SUBMIT
-      return false;
-    }
-    </script>
 </head>
 <body>
 
@@ -207,86 +178,30 @@
           <li class="l-section section">
             <div class="hire">
               <h2>You want us to do</h2>
-              <!-- checkout formspree.io for easy form setup 
-              <form class="work-request" onsubmit="return sendData()" id="demo">
-                <div class="work-request--options">
-                  <span class="options-a">
-                    <input id="opt-1" type="checkbox" value="app design">
-                    <label for="opt-1">
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                      viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
-                      <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
-                        <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
-                      </g>
-                      </svg>
-                      App Design
-                    </label>
-                    <input id="opt-2" type="checkbox" value="graphic design">
-                    <label for="opt-2">
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                      viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
-                      <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
-                        <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
-                      </g>
-                      </svg>
-                      Graphic Design
-                    </label>
-                    <input id="opt-3" type="checkbox" value="motion design">
-                    <label for="opt-3">
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                      viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
-                      <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
-                        <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
-                      </g>
-                      </svg>
-                      Motion Design
-                    </label>
-                  </span>
-                  <span class="options-b">
-                    <input id="opt-4" type="checkbox" value="ux design">
-                    <label for="opt-4">
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                      viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
-                      <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
-                        <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
-                      </g>
-                      </svg>
-                      UX Design
-                    </label>
-                    <input id="opt-5" type="checkbox" value="webdesign">
-                    <label for="opt-5">
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                      viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
-                      <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
-                        <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
-                      </g>
-                      </svg>
-                      Webdesign
-                    </label>
-                    <input id="opt-6" type="checkbox" value="marketing">
-                    <label for="opt-6">
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                      viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
-                      <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
-                        <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
-                      </g>
-                      </svg>
-                      Marketing
-                    </label>
-                  </span>
-                </div>
+              <!-- checkout formspree.io for easy form setup -->
+              <form class="work-request">
                 <div class="work-request--information">
                   <div class="information-name">
-                    <input id="name" type="text" spellcheck="false">
+                    <input id="name" name="name" type="text" spellcheck="false">
                     <label for="name">Name</label>
                   </div>
                   <div class="information-email">
-                    <input id="email" type="email" spellcheck="false">
+                    <input id="email" name="email" type="email" spellcheck="false">
                     <label for="email">Email</label>
+                  </div>
+                  </div>
+                  <div class="work-request--information">
+                  <div class="information-name">
+                    <input id="phoneNumber" name="phoneNumber" type="text" spellcheck="false">
+                    <label for="phoneNumber">Phone Number</label>
+                  </div>
+                  <div class="information-name">
+                    <input id="message" name="message" class="message-box" type="text" spellcheck="false">
+                    <label for="message">Message</label>
                   </div>
                 </div>
                 <input type="submit" value="Send Request">
-              </form>-->
+              </form>
 
             </div>
           </li>
@@ -302,7 +217,59 @@
     <li>Hire us</li>
   </ul>
 </div>
-
+      <script>
+      document.addEventListener('DOMContentLoaded', function () {
+      // Function to handle form submission
+      function handleSubmit(event) {
+        event.preventDefault(); // Prevents the default form submission
+        // Get form data
+        const name = document.querySelector('input[name="name"]').value;
+        const phoneNumber = document.querySelector('input[name="phoneNumber"]').value;
+        const email = document.querySelector('input[name="email"]').value;
+        const message = document.querySelector('.message-box').value;
+        // Prepare data for POST request
+        const formData = {
+          name: name,
+          phoneNumber: phoneNumber,
+          email: email,
+          message: message
+        };
+        console.log(formData);
+        // URL to your API Gateway endpoint
+        const apiUrl = 'https://n346ou54og.execute-api.us-east-1.amazonaws.com/prod/contact';
+        // Fetch options
+        const options = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        };
+        // Fetch data
+        fetch(apiUrl, options)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(data => {
+            // Handle successful response
+            console.log('Data sent successfully:', data);
+            // You can add additional logic here if needed
+          })
+          .catch(error => {
+            // Handle error
+            console.error('Error sending data:', error.message);
+            // You can add additional error handling logic here if needed
+          });
+      }
+      // Get the form element
+      const form = document.querySelector('form');
+      // Add event listener for form submission
+      form.addEventListener('submit', handleSubmit);
+    });
+  </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
 <script src="assets/js/functions-min.js"></script>
